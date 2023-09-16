@@ -4,6 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Animated, { useSharedValue, useAnimatedStyle, withSpring } from 'react-native-reanimated';
 import { PanGestureHandler } from 'react-native-gesture-handler';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import Entypo from 'react-native-vector-icons/Entypo';
 
 const { width, height } = Dimensions.get('window');
 
@@ -11,15 +12,9 @@ const { width, height } = Dimensions.get('window');
 const data = [
   {
     id: '1',
-    image: 'https://example.com/image1.jpg',
+    image: 'assets/two-cats.png',
     prompt: 'This is the first prompt',
     tag: 'Art',
-  },
-  {
-    id: '2',
-    image: 'https://example.com/image1.jpg',
-    prompt: 'This is the second prompt',
-    tag: 'other',
   },
   // Add more objects here
 ];
@@ -44,24 +39,27 @@ export default function Swipe() {
         >
           <Animated.View style={[styles.card, panStyle]}>
             <Image source={{ uri: item.image }} style={styles.image} />
-
             <LinearGradient colors={['#4caf50', '#8bc34a']} style={styles.tagBox}>
               <Text style={styles.tagText}>{item.tag}</Text>
             </LinearGradient>
-
             <Text style={styles.promptText}>{item.prompt}</Text>
-
             <View style={styles.buttonGroup}>
               <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText}>X</Text>
+                <LinearGradient colors={['#FF6347', '#FF0000']} style={styles.gradient}>
+                  <Entypo name="cross" size={32} color="white" />
+                </LinearGradient>
               </TouchableOpacity>
 
               <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText}>Star</Text>
+                <LinearGradient colors={['#1E90FF', '#0000FF']} style={styles.gradient}>
+                  <Entypo name="star" size={40} color="white" />
+                </LinearGradient>
               </TouchableOpacity>
 
               <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText}>Heart</Text>
+                <LinearGradient colors={['#32CD32', '#008000']} style={styles.gradient}>
+                  <Entypo name="heart" size={32} color="white"/>
+                </LinearGradient>
               </TouchableOpacity>
             </View>
           </Animated.View>
@@ -105,24 +103,29 @@ const styles = StyleSheet.create({
   },
   promptText: {
     position: 'absolute',
-    bottom: 50,
+    bottom: 90,
     left: 20,
   },
   buttonGroup: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around', // Changed from 'space-between'
     position: 'absolute',
     bottom: 10,
     left: 20,
     right: 20,
   },
   button: {
-    padding: 15,
-    backgroundColor: 'white',
+    marginHorizontal: 5, // Added to make buttons closer
+    backgroundColor: 'transparent',
     borderRadius: 50,
     elevation: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  buttonText: {
-    fontSize: 18,
+  gradient: {
+    padding: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 50,
   },
 });
