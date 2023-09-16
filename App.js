@@ -16,8 +16,8 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen name="Home" component={Swipe} />
-        <Tab.Screen name="Settings" component={History} />
+        <Tab.Screen name="Swipe" component={Swipe} />
+        <Tab.Screen name="History" component={History} />
       </Tab.Navigator>
       {/* <StatusBar style="auto" /> */}
     </NavigationContainer>
