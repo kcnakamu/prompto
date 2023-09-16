@@ -1,12 +1,26 @@
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import History from './screens/History';
+import Swipe from './screens/Swipe';
+
+
+// bottom tab navigation
+const Tab = createBottomTabNavigator();
+
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={Swipe} />
+        <Tab.Screen name="Settings" component={History} />
+      </Tab.Navigator>
+      {/* <StatusBar style="auto" /> */}
+    </NavigationContainer>
   );
 }
 
