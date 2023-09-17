@@ -7,10 +7,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import History from './screens/History';
 import Swipe from './screens/Swipe';
 
-
 // bottom tab navigation
 const Tab = createBottomTabNavigator();
-
 
 export default function App() {
   return (
